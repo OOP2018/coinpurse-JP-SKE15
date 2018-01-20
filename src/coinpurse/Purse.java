@@ -142,7 +142,7 @@ public class Purse {
 
 	/**
 	 * toString returns a string description of the purse contents. 
-	 * @return whatever is a useful description.
+	 * @return coin's description.
 	 */
 	public String toString() {
 		return this.count() + " coins with value " + this.getBalance();
