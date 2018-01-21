@@ -23,10 +23,7 @@ public class MoneyUtil {
 		return same;
 	}
 
-	/**
-	 * testsortCoins is for check the compareTo method
-	 */
-	public void testsortCoin() {
+	public void main() {
 		List<Coin> coins = new ArrayList<Coin>();
 		coins.add(new Coin(10.0, "Bath"));
 		coins.add(new Coin(0.5, "Bath"));
