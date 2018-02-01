@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 /**
  * A comparator of a Valuable class.
- * @author HAYATO
+ * @author Hayato Kawai
  *
  */
 public class ValueComparator implements Comparator<Valuable> {
@@ -14,7 +14,7 @@ public class ValueComparator implements Comparator<Valuable> {
 	     * First compare them by currency, so that "Baht" < "Dollar".
 	     * If both objects have the same currency, order them by value.
 	     *
-	     * @param a Valuable object to compare with b
+	     * @param a valuable object to compare with b
 	     * @param b valuable object
 	     * @return 1 if have higher value and currency
 	     *         0 if both are the same value and currency

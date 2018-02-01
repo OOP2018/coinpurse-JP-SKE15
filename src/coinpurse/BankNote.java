@@ -52,7 +52,7 @@ public class BankNote implements Valuable{
 	/**
 	 *Compares this object to the specified object.
 	 * @param obj is the object that use to compare with this object
-	 * @return true if obj is  bankNote and the value and the currency of the objects are the same
+	 * @return true if obj is  banknote and the value and the currency of the objects are the same
 	 */
 	@Override
 	public boolean equals(Object obj) {
