@@ -1,7 +1,7 @@
 package coinpurse;
 
 /**
- * Banknote represents banknote (money) with a fixed value and currency.
+ * BankNote represents banknote (money) with a fixed value and currency.
  * @author Hayato Kawai
  *
  */
