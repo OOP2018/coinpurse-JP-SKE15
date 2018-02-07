@@ -39,18 +39,57 @@ public class PurseTest {
 		return new Coin(value,CURRENCY);
 	}
 
+    /** Make a banknote with the default currency. To save typing "new BankNote(...)" */
+    private BankNote makeNote(double value) {
+    	return new BankNote(value, CURRENCY);
+    }
+
     /** Easy test that the Purse constructor is working. */
     @Test
     public void testConstructor()
     {
-        Purse purse = new Purse(3);
-        assertEquals(3, purse.getCapacity());
-        assertEquals(false, purse.isFull());
-        assertEquals(0, purse.count());
+    	Purse purse = new Purse(3);
+    	assertEquals(3, purse.getCapacity());
+    	assertEquals(false, purse.isFull());
+    	assertEquals(0, purse.count());
     }
-
     
-
+    /**test for BankNote*/
+    @Test
+    public void testBankNote() {
+    	Purse purse = new Purse(3);
+    	BankNote note1 = makeNote(20);
+    	BankNote note2 = makeNote(100);
+    	BankNote note3 = makeNote(20);
+    	//testEquals
+    	  assertFalse(note1.equals(note2));
+    	  assertFalse(note2.equals(note3));
+    	  assertTrue(note1.equals(note3));
+    	//testInsert
+    	  assertTrue( purse.insert(note1));
+          assertTrue( purse.insert(note3));
+          assertTrue( purse.insert(note2));
+          assertEquals( 3, purse.count());
+          // purse is full so insert should fail
+          assertFalse( purse.insert(makeNote(1)) );
+       //testgetBalance()
+          assertEquals(140, purse.getBalance(), TOL);
+       //testWithdraw
+        Purse purse2 = new Purse(5);
+  		double [] values = {100, 20, 50, 20}; // values of banknote we will insert
+  		
+  		for(double value : values) {
+  			Valuable note = makeNote(value);
+  			assertTrue(purse2.insert(note));
+  			assertEquals(value,  purse2.getBalance(), TOL);
+  			Valuable [] result = purse2.withdraw(value);
+  			assertTrue( result != null );
+  			assertEquals( 1, result.length );
+  			assertSame(  note, result[0] ); // should be same object
+  			assertEquals( 0, purse2.getBalance(), TOL );
+  		}	        
+    }
+    
     /** Insert some coins. Easy test. */
     @Test
     public void testInsert()
