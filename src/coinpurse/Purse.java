@@ -129,6 +129,6 @@ public class Purse {
 	 * @return value's description.
 	 */
 	public String toString() {
-		return this.count() + " coins with value " + this.getBalance();
+		return this.count() + " money with value " + this.getBalance();
 	}
 }
