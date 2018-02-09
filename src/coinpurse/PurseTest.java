@@ -177,12 +177,12 @@ public class PurseTest {
 	@Test(timeout=1000)
 	public void testMultiWithdraw() {
 		Purse purse = new Purse(10);
-		Valuable[] coins = { makeCoin(5.0), makeCoin(10.0), makeCoin(1.0), makeCoin(5.0) };
+		Valuable[] values = { makeCoin(5.0), makeCoin(10.0), makeCoin(1.0), makeCoin(5.0) };
 		// insert them all
-		for(Valuable coin: coins) assertTrue( purse.insert(coin) );
+		for(Valuable value: values) assertTrue( purse.insert(value) );
 		
-		double amount1 = coins[1].getValue() + coins[3].getValue();
-		double amount2 = coins[0].getValue() + coins[2].getValue();
+		double amount1 = values[1].getValue() + values[3].getValue();
+		double amount2 = values[0].getValue() + values[2].getValue();
 		assertEquals(amount1+amount2, purse.getBalance(), TOL );
 		
 		Valuable [] wd1 = purse.withdraw(amount1);
@@ -241,9 +241,9 @@ public class PurseTest {
 	}
 	
 	/**
-	 * Sum the value of some coins.
-	 * @param wd1 array of coins
-	 * @return sum of values of the coins
+	 * Sum the value of some moneys.
+	 * @param wd1 array of moneys
+	 * @return sum of values of the moneys
 	 */
 	private double sum(Valuable[] wd1)  {
 		if (wd1 == null) return 0.0;

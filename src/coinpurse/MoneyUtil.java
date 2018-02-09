@@ -24,7 +24,7 @@ public class MoneyUtil {
 		return same;
 	}
 
-	public void main() {
+	public static void main(String[]args) {
 		List<Valuable> coins = new ArrayList<Valuable>();
 		coins.add(new Coin(10.0, "Bath"));
 		coins.add(new Coin(0.5, "Bath"));
