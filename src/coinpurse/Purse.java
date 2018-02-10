@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	private List<Valuable> money  = new ArrayList<>();
+	private List<Valuable> money  ;
 	private Comparator<Valuable> comp = new ValueComparator() ;
 
 	/**
@@ -28,6 +28,7 @@ public class Purse {
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
+		money = new ArrayList<>();
 	}
 
 	/**
@@ -114,18 +115,18 @@ public class Purse {
 	 *         requested amount.
 	 */
 	public Valuable[]withdraw (Valuable amount){
-		double valuew = amount.getValue();
-		if(valuew <= 0 ||amount == null) return null;
-		List<Valuable> purse = new ArrayList<>();
-		double amountNeededToWithdraw = valuew;
+		List<Valuable> purse = new ArrayList<Valuable>();
 		Collections.sort(money,comp);
 		Collections.reverse(money);
-		if (amountNeededToWithdraw < 0 || money.size() == 0 || this.getBalance() < amountNeededToWithdraw)return null;
+		double amountNeededToWithdraw = amount.getValue();
+		if (amount == null ||amountNeededToWithdraw < 0 || money.size() == 0 || this.getBalance() < amountNeededToWithdraw)return null;
 		for (Valuable value : money) {
 			double v = value.getValue();
+			if(value.getCurrency().equalsIgnoreCase(amount.getCurrency())) {
 			if (amountNeededToWithdraw >= v) {
 				amountNeededToWithdraw -= v;
 				purse.add(value);
+			}
 			}
 			if (amountNeededToWithdraw == 0)
 				break;
