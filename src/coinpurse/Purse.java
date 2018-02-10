@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	private List<Valuable> money  ;
+	private List<Valuable> money = new ArrayList<>()  ;
 	private Comparator<Valuable> comp = new ValueComparator() ;
 
 	/**
@@ -28,8 +28,7 @@ public class Purse {
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
-		money = new ArrayList<>();
-	}
+}
 
 	/**
 	 * Count and return the number of valuable in the purse. This is the number of
