@@ -6,15 +6,15 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * A coin purse contains valuables. You can insert valuable, withdraw money, check the
- * balance, and check if the purse is full.
+ * A coin purse contains valuables. You can insert valuable, withdraw money,
+ * check the balance, and check if the purse is full.
  * 
  * @author Hayato Kawai
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	private List<Valuable> money = new ArrayList<>()  ;
-	private Comparator<Valuable> comp = new ValueComparator() ;
+	private List<Valuable> money = new ArrayList<>();
+	private Comparator<Valuable> comp = new ValueComparator();
 
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set when
@@ -24,11 +24,13 @@ public class Purse {
 
 	/**
 	 * Create a purse with a specified capacity.
-	 * @param capacity is maximum number of valuable you can put in purse.
+	 * 
+	 * @param capacity
+	 *            is maximum number of valuable you can put in purse.
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
-}
+	}
 
 	/**
 	 * Count and return the number of valuable in the purse. This is the number of
@@ -54,7 +56,7 @@ public class Purse {
 	}
 
 	/**
-	 * Return the capacity of the coin purse.
+	 * Return the capacity of the purse.
 	 * 
 	 * @return the capacity
 	 */
@@ -76,8 +78,8 @@ public class Purse {
 	}
 
 	/**
-	 * Insert a valuable into the purse. The valuable is only inserted if the purse has
-	 * space for it and the valuable has positive value. No worthless valuables!
+	 * Insert a valuable into the purse. The valuable is only inserted if the purse
+	 * has space for it and the valuable has positive value. No worthless valuables!
 	 * 
 	 * @param value
 	 *            is a Value object to insert into purse
@@ -92,56 +94,67 @@ public class Purse {
 	}
 
 	/**
-	 * Withdraw the requested amount of money that have currency is Baht.
-	 *  Return an array of Valuable withdrawn
-	 * from purse, or return null if cannot withdraw the amount requested.
+	 * Withdraw the requested amount of money that have currency is Baht. Return an
+	 * array of Valuable withdrawn from purse, or return null if cannot withdraw the
+	 * amount requested.
+	 * 
 	 * @param amount
 	 *            is the amount to withdraw
-	 * @return array of Valuable objects for money withdrawn, or null if cannot withdraw
-	 *         requested amount.
+	 * @return array of Valuable objects for money withdrawn, or null if cannot
+	 *         withdraw requested amount.
 	 */
 	public Valuable[] withdraw(double amount) {
-		 return   withdraw(new Money(amount ,"Baht"));
+		return withdraw(new Money(amount, "Baht"));
 	}
-	
+
 	/**
 	 * Withdraw the requested amount of money that have the same currency as amount.
-	 *  Return an array of Valuable withdrawn
-	 * from purse, or return null if cannot withdraw the amount requested.
+	 * Return an array of Valuable withdrawn from purse, or return null if cannot
+	 * withdraw the amount requested.
+	 * 
 	 * @param amount
 	 *            is the amount to withdraw
-	 * @return array of Valuable objects for money withdrawn, or null if cannot withdraw
-	 *         requested amount.
+	 * @return array of Valuable objects for money withdrawn, or null if cannot
+	 *         withdraw requested amount.
 	 */
-	public Valuable[]withdraw (Valuable amount){
+	public Valuable[] withdraw(Valuable amount) {
 		List<Valuable> purse = new ArrayList<Valuable>();
-		Collections.sort(money,comp);
-		Collections.reverse(money);
 		double amountNeededToWithdraw = amount.getValue();
-		if (amount == null ||amountNeededToWithdraw < 0 || money.size() == 0 || this.getBalance() < amountNeededToWithdraw)return null;
+		
+		Collections.sort(money, comp);
+		Collections.reverse(money);
+		
+		if (amount == null || amountNeededToWithdraw < 0 || money.size() == 0
+				|| this.getBalance() < amountNeededToWithdraw)
+			return null;
+		
 		for (Valuable value : money) {
-			double v = value.getValue();
-			if(value.getCurrency().equalsIgnoreCase(amount.getCurrency())) {
-			if (amountNeededToWithdraw >= v) {
-				amountNeededToWithdraw -= v;
-				purse.add(value);
-			}
+			double value2 = value.getValue();
+			if (value.getCurrency().equalsIgnoreCase(amount.getCurrency())) {
+				if (amountNeededToWithdraw >= value2) {
+					amountNeededToWithdraw -= value2;
+					purse.add(value);
+				}
 			}
 			if (amountNeededToWithdraw == 0)
 				break;
 		}
+		
 		if (amountNeededToWithdraw != 0)
 			return null;
-		for (Valuable re : purse) {
-			money.remove(re);
+		
+		for (Valuable remove : purse) {
+			money.remove(remove);
 		}
-		Valuable[] moneys = new Valuable[purse.size()];
-		purse.toArray(moneys);
-		return moneys;
+		
+		Valuable[] money = new Valuable[purse.size()];
+		purse.toArray(money);
+		return money;
 	}
-	
+
 	/**
-	 * toString returns a string description of the purse contents. 
+	 * toString returns a string description of the purse contents.
+	 * 
 	 * @return value's description.
 	 */
 	public String toString() {
