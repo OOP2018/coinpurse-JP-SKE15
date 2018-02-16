@@ -7,7 +7,6 @@ package coinpurse;
  */
 public class BankNote extends Money{
 
-	private static long nextSerialNumber = 1000000;
 	private long serialNumber;
 	
 	/**
@@ -15,9 +14,9 @@ public class BankNote extends Money{
 	 * @param value is banknote's value
 	 * @param currency is banknote's currency
 	 */
-	public BankNote(double value, String currency) {
+	public BankNote(double value, String currency,long serial) {
 		super(value,currency);
-		serialNumber = nextSerialNumber++;
+		serialNumber = serial;
 	}
 	
 	/**
@@ -34,6 +33,6 @@ public class BankNote extends Money{
 	 */
 	@Override
 	public String toString() {
-		return String.format("%.2f-%s note [%d]",value,currency,serialNumber);
+		return String.format("%.2f-%s [%d]",value,currency,serialNumber);
 	}
 }

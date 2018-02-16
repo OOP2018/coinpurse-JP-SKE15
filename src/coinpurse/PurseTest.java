@@ -41,7 +41,7 @@ public class PurseTest {
 
     /** Make a banknote with the default currency. To save typing "new BankNote(...)" */
     private BankNote makeNote(double value) {
-    	return new BankNote(value, CURRENCY);
+    	return new BankNote(value, CURRENCY,9999);
     }
 
     /** Easy test that the Purse constructor is working. */

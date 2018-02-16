@@ -2,6 +2,7 @@ package coinpurse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * A main class to create objects and connect objects together.
@@ -15,6 +16,8 @@ public class Main {
      * @param args not used
      */
     public static void main( String[] args ) {
+    	MoneyFactory factory = ReadFile.read();
+    	MoneyFactory.setFactory(factory);
     	 // 1. create a Purse
     	Purse purse = new Purse(10);
         // 2. create a ConsoleDialog with a reference to the Purse object
