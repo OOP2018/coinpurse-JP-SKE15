@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Demo for MoneyFactory
- * 
  * @author Hayato Kawai
  *
  */

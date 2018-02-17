@@ -2,7 +2,6 @@ package coinpurse;
 /**
  * MoneyFactory class for Thai's Currency
  * @author Hayato Kawai
- *
  */
 public class ThaiMoneyFactory extends MoneyFactory {
      
