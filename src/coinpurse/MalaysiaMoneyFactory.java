@@ -1,6 +1,6 @@
 package coinpurse;
 /**
- * MoneyFactory class for Malaysia Currency
+ * MoneyFactory class for Malaysia's Currency
  * @author Hayato Kawai
  */
 public class MalaysiaMoneyFactory extends MoneyFactory {

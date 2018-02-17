@@ -1,7 +1,11 @@
 package coinpurse;
 
 import java.util.ResourceBundle;
-
+ /**
+  * This class is class for read file
+  * @author Hayato Kawai
+  *
+  */
 public class ReadFile {
 
 	/**
