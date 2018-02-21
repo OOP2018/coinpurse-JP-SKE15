@@ -18,6 +18,7 @@ public class Main {
     public static void main( String[] args ) {
     	MoneyFactory factory = ReadFile.read();
     	MoneyFactory.setFactory(factory);
+  
     	 // 1. create a Purse
     	Purse purse = new Purse(10);
         // 2. create a ConsoleDialog with a reference to the Purse object

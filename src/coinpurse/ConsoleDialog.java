@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class ConsoleDialog {
 	// default currency for this dialog
-	public static final String CURRENCY = "Baht";
+	public static String CURRENCY = "Baht";
 	// use a single java.util.Scanner object for reading all input
 	private static Scanner console = new Scanner(System.in);
 	private static MoneyFactory moneyFactory = MoneyFactory.getInstance();
@@ -35,6 +35,9 @@ public class ConsoleDialog {
 
 	/** Run the user interface. */
 	public void run() {
+		if (MoneyFactory.getInstance().getClass().getSimpleName().equals("MalaysiaMoneyFactory")) {
+			CURRENCY = "Ringgit";
+		}
 		String choice = "";
 		String prompt = FULL_PROMPT;
 		loop: while (true) {
