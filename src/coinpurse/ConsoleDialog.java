@@ -35,7 +35,7 @@ public class ConsoleDialog {
 
 	/** Run the user interface. */
 	public void run() {
-		if (MoneyFactory.getInstance().getClass().getSimpleName().equals("MalaysiaMoneyFactory")) {
+		if (moneyFactory.getClass().getSimpleName().contains("Malay")) {
 			CURRENCY = "Ringgit";
 		}
 		String choice = "";
