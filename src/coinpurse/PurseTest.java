@@ -177,6 +177,7 @@ public class PurseTest {
 	@Test(timeout=1000)
 	public void testMultiWithdraw() {
 		Purse purse = new Purse(10);
+		
 		Valuable[] values = { makeCoin(5.0), makeCoin(10.0), makeCoin(1.0), makeCoin(5.0) };
 		// insert them all
 		for(Valuable value: values) assertTrue( purse.insert(value) );

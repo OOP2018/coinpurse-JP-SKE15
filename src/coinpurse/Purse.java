@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import coinpurse.strategy.GreedyWithdrawStrategy;
+import coinpurse.strategy.RecursiveWithdraw;
+import coinpurse.strategy.WithdrawStrategy;
+
 /**
  * A coin purse contains valuables. You can insert valuable, withdraw money,
  * check the balance, and check if the purse is full.
@@ -15,7 +19,7 @@ public class Purse {
 	/** Collection of objects in the purse. */
 	private List<Valuable> money = new ArrayList<>();
 	private Comparator<Valuable> comp = new ValueComparator();
-
+	private WithdrawStrategy strategy= new RecursiveWithdraw();
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set when
 	 * the purse is created and cannot be changed.
@@ -118,38 +122,19 @@ public class Purse {
 	 *         withdraw requested amount.
 	 */
 	public Valuable[] withdraw(Valuable amount) {
-		List<Valuable> purse = new ArrayList<Valuable>();
-		double amountNeededToWithdraw = amount.getValue();
-		
-		Collections.sort(money, comp);
-		Collections.reverse(money);
-		
-		if (amount == null || amountNeededToWithdraw < 0 || money.size() == 0
-				|| this.getBalance() < amountNeededToWithdraw)
+		if (amount.getValue() < 0 || money.size() == 0|| amount == null)
 			return null;
 		
-		for (Valuable value : money) {
-			double value2 = value.getValue();
-			if (value.getCurrency().equalsIgnoreCase(amount.getCurrency())) {
-				if (amountNeededToWithdraw >= value2) {
-					amountNeededToWithdraw -= value2;
-					purse.add(value);
-				}
-			}
-			if (amountNeededToWithdraw == 0)
-				break;
+		List<Valuable> list = new ArrayList<>();
+		if(strategy.withdraw(amount, money) == null) return null;
+		list.addAll(strategy.withdraw(amount, money));
+		
+		for(Valuable val : list) {
+			money.remove(val);
 		}
-		
-		if (amountNeededToWithdraw != 0)
-			return null;
-		
-		for (Valuable remove : purse) {
-			money.remove(remove);
-		}
-		
-		Valuable[] money = new Valuable[purse.size()];
-		purse.toArray(money);
-		return money;
+		Valuable[] value = new Valuable[list.size()];
+		list.toArray(value);
+		return value;
 	}
 
 	/**
