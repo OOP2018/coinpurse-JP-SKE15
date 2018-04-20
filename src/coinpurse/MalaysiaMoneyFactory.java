@@ -29,7 +29,7 @@ public class MalaysiaMoneyFactory extends MoneyFactory {
 		} else {
 			if (value == 1 || value == 2 || value == 5 || value == 10 || value == 50 || value == 100) {
 				serialNumber++;
-				return new BankNote(value, "Ringgit", serialNumber);
+				return new Banknote(value, "Ringgit", serialNumber);
 			} else {
 				System.out.println("Malaysia doesn't have " + value + " note");
 			}

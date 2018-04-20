@@ -40,8 +40,8 @@ public class PurseTest {
 	}
 
     /** Make a banknote with the default currency. To save typing "new BankNote(...)" */
-    private BankNote makeNote(double value) {
-    	return new BankNote(value, CURRENCY,9999);
+    private Banknote makeNote(double value) {
+    	return new Banknote(value, CURRENCY,9999);
     }
 
     /** Easy test that the Purse constructor is working. */
@@ -58,9 +58,9 @@ public class PurseTest {
     @Test
     public void testBankNote() {
     	Purse purse = new Purse(3);
-    	BankNote note1 = makeNote(20);
-    	BankNote note2 = makeNote(100);
-    	BankNote note3 = makeNote(20);
+    	Banknote note1 = makeNote(20);
+    	Banknote note2 = makeNote(100);
+    	Banknote note3 = makeNote(20);
     	//testEquals
     	  assertFalse(note1.equals(note2));
     	  assertFalse(note2.equals(note3));

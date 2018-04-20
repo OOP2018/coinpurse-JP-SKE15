@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import coinpurse.BankNote;
+import coinpurse.Banknote;
 import coinpurse.Money;
 import coinpurse.Valuable;
 /**

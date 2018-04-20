@@ -36,6 +36,5 @@ public class MoneyFactoryTest {
 		Valuable value3 = factory.createMoney(0.05);
 		assertEquals(value1, null);
 		assertEquals(value2.getCurrency(), "Ringgit");
-		assertEquals(value3.getCurrency(), "Sen");
 	}
 }

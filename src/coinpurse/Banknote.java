@@ -5,7 +5,7 @@ package coinpurse;
  * @author Hayato Kawai
  *
  */
-public class BankNote extends Money{
+public class Banknote extends Money{
 
 	private long serialNumber;
 	
@@ -14,7 +14,7 @@ public class BankNote extends Money{
 	 * @param value is banknote's value
 	 * @param currency is banknote's currency
 	 */
-	public BankNote(double value, String currency,long serial) {
+	public Banknote(double value, String currency,long serial) {
 		super(value,currency);
 		serialNumber = serial;
 	}

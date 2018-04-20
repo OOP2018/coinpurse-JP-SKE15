@@ -24,7 +24,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		} else {
 			if (value == 20 || value == 50 || value == 100 || value == 500 || value == 1000) {
 				serialNumber++; 
-				return new BankNote(value, "Baht",serialNumber);}
+				return new Banknote(value, "Baht",serialNumber);}
 			else {
 				System.out.println("Thailand doesn't have " + value + " note");
 			}
